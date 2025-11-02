@@ -85,90 +85,79 @@ Select the example to test:
 0. Exit
 ```
 
-4. Enter a Grammar (Option 4)
+# 4. Enter a Grammar (Option 4)
 
 You can input your own grammar using this format:
 
+Example:
 S -> AB
 A -> aA | d
 B -> bBc | e
 
----
-
-###Rules:
-
-1. Uppercase letters = nonterminals
-
-2. Lowercase letters = terminals
-
-3. Use e for epsilon (empty string)
+## Rules
+- **Uppercase letters** = nonterminals  
+- **Lowercase letters** = terminals  
+- Use **`e`** for epsilon (empty string)
 
 ---
 
-###4. Test Strings
+# 5. Test Strings
 
-If the grammar is LL(1), SLR(1), or both, the program will allow testing input strings:
+If the grammar is **LL(1)**, **SLR(1)**, or both, the program will allow testing input strings.
 
+### Example Input
 Enter strings to test (empty line to finish):
 i+i
 (i)
 (i+i)*i)
 
-
-The program outputs:
-
+### Example Output
 yes
 no
 
+Each result indicates whether the string is **accepted** (`yes`) or **rejected** (`no`) by the parser.
 
-##depending on whether the string is accepted.
+---
 
-File Structure
+# File Structure
 ├── main.cpp      # Core program source code
 ├── README.md     # Project documentation
 
-Implementation Details
+---
 
-Language: C++17
+# Implementation Details
+- **Language:** C++17  
+- **Dependencies:** Standard Template Library (STL) only  
 
-Dependencies: Standard Template Library (STL) only
+### Core Components
+- Computation of FIRST and FOLLOW sets  
+- Construction of LL(1) parse table  
+- Construction of LR(0) items, closure, and goto functions  
+- SLR(1) parsing table generation  
+- LL(1) and SLR(1) parsing algorithms  
 
-Core Components:
+---
 
-Computation of FIRST and FOLLOW sets
+# Example Outputs
 
-Construction of LL(1) parse table
-
-Construction of LR(0) items, closure, and goto functions
-
-SLR(1) parsing table generation
-
-LL(1) and SLR(1) parsing algorithms
-
-Example Outputs
-
-Case 1 – Grammar is LL(1) and SLR(1):
-
-The grammar is LL(1) and SLR(1).
+### Case 1 – Grammar is LL(1) and SLR(1)
+The grammar is LL(1) and SLR(1).  
 You can select parser to test strings.
 
-
-Case 2 – Grammar is only LL(1):
-
-The grammar is LL(1).
+### Case 2 – Grammar is only LL(1)
+The grammar is LL(1).  
 Enter strings to test:
 
-
-Case 3 – Grammar is neither LL(1) nor SLR(1):
-
+### Case 3 – Grammar is neither LL(1) nor SLR(1)
 The grammar is not LL(1) nor SLR(1).
 
-Author
-Samuel Velazques
-Thomas Bedoya
+---
+
+# Author
+Developed as part of a **compiler construction and syntax analysis** project.  
+Language: **C++**
 
 
-Developed as part of a compiler construction and syntax analysis project.
-Language: C++
+
 
 
