@@ -74,6 +74,8 @@ g++ -std=c++17 -O2 -o parser main.cpp
 
 When the program starts, a menu will appear:
 
+```
+
 Project: Generador de Analizador sintactico LL(1) y SLR(1)
 Select the example to test:
 1. Example 1 (arithmetic expression grammar)
@@ -81,7 +83,7 @@ Select the example to test:
 3. Example 3 (non-LL(1) and non-SLR(1) grammar)
 4. Enter your own grammar
 0. Exit
-
+```
 
 4. Enter a Grammar (Option 4)
 
