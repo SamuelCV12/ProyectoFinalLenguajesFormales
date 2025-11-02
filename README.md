@@ -93,16 +93,19 @@ S -> AB
 A -> aA | d
 B -> bBc | e
 
+---
 
-Rules:
+###Rules:
 
-Uppercase letters = nonterminals
+1. Uppercase letters = nonterminals
 
-Lowercase letters = terminals
+2. Lowercase letters = terminals
 
-Use e for epsilon (empty string)
+3. Use e for epsilon (empty string)
 
-5. Test Strings
+---
+
+###4. Test Strings
 
 If the grammar is LL(1), SLR(1), or both, the program will allow testing input strings:
 
@@ -118,7 +121,7 @@ yes
 no
 
 
-depending on whether the string is accepted.
+##depending on whether the string is accepted.
 
 File Structure
 ├── main.cpp      # Core program source code
