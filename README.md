@@ -64,9 +64,8 @@ This grammar is neither LL(1) nor SLR(1).
 
 ### 1. Compile the Program
 Use any C++17 (or later) compiler:
-```bash
-g++ -std=c++17 -O2 -o parser main.cpp
 
+g++ -std=c++17 -O2 -o parser main.cpp
 
 2. Run the Program
 ./parser
@@ -166,3 +165,5 @@ Thomas Bedoya
 
 Developed as part of a compiler construction and syntax analysis project.
 Language: C++
+
+
