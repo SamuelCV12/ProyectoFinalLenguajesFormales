@@ -154,6 +154,8 @@ The grammar is not LL(1) nor SLR(1).
 ---
 
 # Author
+Samuel Velasquesz
+Thomas Bedoya
 Developed as part of a **compiler construction and syntax analysis** project.  
 Language: **C++**
 
