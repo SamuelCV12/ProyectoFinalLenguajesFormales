@@ -1,7 +1,8 @@
-# ProyectoFinalLenguajesFormales
+# Final Project Formal Languages
 
+---
 
-# LL(1) and SLR(1) Parser Generator
+## LL(1) and SLR(1) Parser Generator
 
 ## Overview
 This project implements a **syntax analyzer generator** that builds and tests **LL(1)** and **SLR(1)** parsers for context-free grammars.  
