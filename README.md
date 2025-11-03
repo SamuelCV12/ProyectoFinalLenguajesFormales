@@ -86,7 +86,7 @@ Select the example to test:
 0. Exit
 ```
 
-# 4. Enter a Grammar (Option 4)
+## 4. Enter a Grammar (Option 4)
 
 You can input your own grammar using this format:
 
@@ -102,7 +102,7 @@ B -> bBc | e
 
 ---
 
-# 5. Test Strings
+## 5. Test Strings
 
 If the grammar is **LL(1)**, **SLR(1)**, or both, the program will allow testing input strings.
 
@@ -120,13 +120,13 @@ Each result indicates whether the string is **accepted** (`yes`) or **rejected**
 
 ---
 
-# File Structure
+## File Structure
 ├── main.cpp      # Core program source code
 ├── README.md     # Project documentation
 
 ---
 
-# Implementation Details
+## Implementation Details
 - **Language:** C++17  
 - **Dependencies:** Standard Template Library (STL) only  
 
@@ -139,7 +139,7 @@ Each result indicates whether the string is **accepted** (`yes`) or **rejected**
 
 ---
 
-# Example Outputs
+## Example Outputs
 
 ### Case 1 – Grammar is LL(1) and SLR(1)
 The grammar is LL(1) and SLR(1).  
@@ -154,8 +154,16 @@ The grammar is not LL(1) nor SLR(1).
 
 ---
 
-# Authors
+## Authors
 Samuel Correa correa Velasquez  
 Thomas Bedoya rendon
+
+---
+
+## References
+1. **AI Tools:**
+   - ChatGPT and DeepSeek for code organization, explanation of code and documentation guidance.
+2. **Books**
+   - "Logic and Discrete Mathematics: A Computer Science Perspective" (Winfried K. Grassmann, Tremblay, and Winfried Karl Grassmann 1996).
 
 
