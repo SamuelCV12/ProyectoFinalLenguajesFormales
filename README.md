@@ -153,7 +153,7 @@ The grammar is not LL(1) nor SLR(1).
 
 ---
 
-# Author
+# Authors
 Samuel Correa correa Velasquez  
 Thomas Bedoya rendon
 
