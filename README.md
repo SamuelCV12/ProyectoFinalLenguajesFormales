@@ -1,169 +1,148 @@
-# Final Project Formal Languages
+# LL(1) and SLR(1) Parser Generator
 
----
+## Team Members
+- **Thomas Bedoya**
+- **Samuel Correa Velasquez**
 
-## LL(1) and SLR(1) Parser Generator
-
-## Overview
-This project implements a **syntax analyzer generator** that builds and tests **LL(1)** and **SLR(1)** parsers for context-free grammars.  
-It allows users to load predefined grammars or input their own, analyze their properties, and test input strings interactively.
-
-The program is written entirely in **C++**, using only the standard library (no external dependencies).
-
----
+## Project Description
+This project was developed for the **Formal Languages and Compilers (ST0270 / SI2002)** course.  
+The goal is to design and implement algorithms to compute **FIRST** and **FOLLOW** sets, and to build both **LL(1)** (Top-Down) and **SLR(1)** (Bottom-Up) parsers for context-free grammars.  
+The program analyzes grammars, determines whether they are **LL(1)**, **SLR(1)**, both, or neither, and allows users to test input strings interactively.
 
 ## Features
-- **Grammar Input Options**
-  - Predefined examples:
-    1. Arithmetic expression grammar  
-    2. Grammar with epsilon (empty string)  
-    3. Non-LL(1)/non-SLR(1) grammar  
-  - Custom grammar input via console
-- **Automatic Computation of**
-  - Nullable nonterminals  
-  - FIRST and FOLLOW sets  
-  - LL(1) parsing table  
-  - LR(0) canonical collection  
-  - ACTION and GOTO tables for SLR(1)
-- **Parser Classification**
-  - Detects whether the grammar is LL(1), SLR(1), both, or neither
-- **Interactive Parsing**
-  - Users can test input strings using LL(1) or SLR(1) parsers
+- Interactive text-based menu for selecting predefined examples or entering a custom grammar.  
+- Automatic computation of **nullable**, **FIRST**, and **FOLLOW** sets.  
+- Construction of the **LL(1)** parsing table and **SLR(1)** parsing automaton using **LR(0) items**.  
+- Detection of conflicts to classify the grammar.  
+- Parsing of input strings with either LL(1) or SLR(1).  
+- Output aligned with the expected format from the course project specifications.  
+- Fully implemented in **C++17**, using only standard libraries.
 
----
+## Examples Included
+1. **Example 1:** Arithmetic expressions grammar (SLR(1))  
+2. **Example 2:** Grammar with epsilon transitions (LL(1) and SLR(1))  
+3. **Example 3:** Grammar that is neither LL(1) nor SLR(1)  
+4. **Option to input a custom grammar manually**
 
-## Example Grammars
+## Technologies Used
+- **Programming Language:** C++17  
+- **Compiler:** g++ (GNU C++ 11.4.0) or any modern C++ compiler  
+- **Libraries:** iostream, vector, string, map, set, stack, algorithm, limits  
+- **Tested On:** Windows 10 and Ubuntu 22.04
 
-### Example 1: Arithmetic Expressions
+## How to Compile and Run
+### 1. Clone the Repository
+git clone https://github.com/<your-username>/<your-repo-name>.git  
+cd <your-repo-name>
 
-S -> S+T | T
-T -> T*F | F
-F -> (S) | i
+### 2. Compile the Program
+g++ -std=c++17 -O2 -o parser main.cpp  
+
+### 3. Run the Program
+./parser  
+
+### 4. Program Menu
+When executed, the following menu appears:
+Proyecto: Generador de Analizador sintactico LL(1) y SLR(1)  
+Seleccione el ejemplo a probar:  
+1. Ejemplo 1 (gramatica de expresiones aritmeticas)  
+2. Ejemplo 2 (gramatica con epsilon)  
+3. Ejemplo 3 (gramatica no LL(1) ni SLR(1))  
+4. Ingresar mi propia gramatica  
+0. Salir  
+
+## How It Works
+1. **Grammar Input**  
+   The user can select a predefined grammar or input a custom one using the format:  
+   S -> AB  
+   A -> aA d  
+   B -> bBc e  
+   - Epsilon is represented by `e`.  
+   - `S` is always the start symbol.  
+   - `$` is not allowed as a terminal.  
+
+2. **Computation of Nullable, FIRST, and FOLLOW Sets**  
+   The program iteratively computes the nullable nonterminals and the FIRST and FOLLOW sets for each nonterminal.
+
+3. **LL(1) Table Construction**  
+   The LL(1) parsing table is built based on FIRST and FOLLOW sets.  
+   If a conflict (multiple entries) occurs, the grammar is not LL(1).
+
+4. **SLR(1) Automaton Construction**  
+   Using LR(0) items, the program constructs the canonical collection and derives ACTION and GOTO tables.  
+   Conflicts in ACTION entries mark the grammar as non-SLR(1).
+
+5. **Grammar Classification**  
+   Depending on conflicts detected:  
+   - Both LL(1) and SLR(1):  
+     "La gramatica es LL(1) y SLR(1)."  
+   - Only LL(1):  
+     "La gramatica es LL(1)."  
+   - Only SLR(1):  
+     "La gramatica es SLR(1)."  
+   - Neither:  
+     "La gramatica no es LL(1) ni SLR(1)."
+
+6. **Parsing Strings**  
+   - For grammars that are LL(1) or SLR(1), the user can input strings to verify whether they belong to the language.  
+   - The program prints “yes” if accepted, “no” otherwise.  
+   - Input ends when an empty line is entered.
+
+## Example Sessions
+
+### Example 1
+Input Grammar:  
+S -> S+T T  
+T -> T*F F  
+F -> (S) i  
+
+Output:  
+Grammar is SLR(1).  
+
+Test Strings:  
+i+i      → yes  
+(i)      → yes  
+(i+i)*i) → no  
+
+### Example 2
+Input Grammar:  
+S -> AB  
+A -> aA d  
+B -> bBc e  
+
+Output:  
+Select a parser (T: for LL(1), B: for SLR(1), Q: quit):  
+
+Test Strings (LL(1)):  
+d     → yes  
+adbc  → yes  
+a     → no  
+
+### Example 3
+Input Grammar:  
+S -> A  
+A -> A b  
+
+Output:  
+Grammar is neither LL(1) nor SLR(1).
+
+## Repository Structure
+ Project Root  
+│  
+├── main.cpp            # Full implementation of LL(1) and SLR(1) parsers  
+├── README.md           # Project documentation  
+└── examples/ (optional) # Folder for input grammars and sample runs  
 
 
-
-### Example 2: Grammar with Epsilon
-
-
-S -> AB
-A -> aA | d
-B -> bBc | ε
-
-
-
-### Example 3: Invalid Grammar
-
-S -> A
-A -> A b
-
-
-This grammar is neither LL(1) nor SLR(1).
-
----
-
-## How to Use
-
-### 1. Compile the Program
-Use any C++17 (or later) compiler:
-
-g++ -std=c++17 -O2 -o parser main.cpp
-
-2. Run the Program
-./parser
-
-3. Select an Option
-
-When the program starts, a menu will appear:
-
-```
-
-Project: Generador de Analizador sintactico LL(1) y SLR(1)
-Select the example to test:
-1. Example 1 (arithmetic expression grammar)
-2. Example 2 (grammar with epsilon)
-3. Example 3 (non-LL(1) and non-SLR(1) grammar)
-4. Enter your own grammar
-0. Exit
-```
-
-## 4. Enter a Grammar (Option 4)
-
-You can input your own grammar using this format:
-
-Example:
-S -> AB
-A -> aA | d
-B -> bBc | e
-
-## Rules
-- **Uppercase letters** = nonterminals  
-- **Lowercase letters** = terminals  
-- Use **`e`** for epsilon (empty string)
-
----
-
-## 5. Test Strings
-
-If the grammar is **LL(1)**, **SLR(1)**, or both, the program will allow testing input strings.
-
-### Example Input
-Enter strings to test (empty line to finish):
-i+i
-(i)
-(i+i)*i)
-
-### Example Output
-yes
-no
-
-Each result indicates whether the string is **accepted** (`yes`) or **rejected** (`no`) by the parser.
-
----
-
-## File Structure
-├── main.cpp      # Core program source code
-├── README.md     # Project documentation
-
----
-
-## Implementation Details
-- **Language:** C++17  
-- **Dependencies:** Standard Template Library (STL) only  
-
-### Core Components
-- Computation of FIRST and FOLLOW sets  
-- Construction of LL(1) parse table  
-- Construction of LR(0) items, closure, and goto functions  
-- SLR(1) parsing table generation  
-- LL(1) and SLR(1) parsing algorithms  
-
----
-
-## Example Outputs
-
-### Case 1 – Grammar is LL(1) and SLR(1)
-The grammar is LL(1) and SLR(1).  
-You can select parser to test strings.
-
-### Case 2 – Grammar is only LL(1)
-The grammar is LL(1).  
-Enter strings to test:
-
-### Case 3 – Grammar is neither LL(1) nor SLR(1)
-The grammar is not LL(1) nor SLR(1).
-
----
-
-## Authors
-Samuel Correa correa Velasquez  
-Thomas Bedoya rendon
-
----
+## License
+This project is for **academic purposes only**, following **EAFIT University – School of Applied Sciences and Engineering** guidelines.  
+All rights reserved to the authors.
 
 ## References
-1. **AI Tools:**
-   - ChatGPT and DeepSeek for code organization, explanation of code and documentation guidance.
-2. **Book**
-   - "Compilers: Principles, Techniques, & Tools. 2nd ed. Boston: Pearson/Addison Wesley" (Aho, Alfred V., and Alfred V. Aho, eds. 2007).
+Aho, Alfred V. et al. *Compilers: Principles, Techniques, and Tools (2nd Edition).*  
+Addison-Wesley, 2006. ISBN: 0321486811.
 
-
+Repository: https://github.com/<your-username>/<your-repo-name>  
+Version: v1.0  
+Language: C++17  
+Institution: EAFIT University — School of Applied Sciences and Engineering
