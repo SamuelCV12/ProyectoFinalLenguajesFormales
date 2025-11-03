@@ -163,7 +163,7 @@ Thomas Bedoya rendon
 ## References
 1. **AI Tools:**
    - ChatGPT and DeepSeek for code organization, explanation of code and documentation guidance.
-2. **Books**
-   - "Logic and Discrete Mathematics: A Computer Science Perspective" (Winfried K. Grassmann, Tremblay, and Winfried Karl Grassmann 1996).
+2. **Book**
+   - "Compilers: Principles, Techniques, & Tools. 2nd ed. Boston: Pearson/Addison Wesley" (Aho, Alfred V., and Alfred V. Aho, eds. 2007).
 
 
