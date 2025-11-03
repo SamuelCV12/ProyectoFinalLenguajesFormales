@@ -154,19 +154,7 @@ The grammar is not LL(1) nor SLR(1).
 ---
 
 # Author
-Samuel Correa correa Velasquez,
+Samuel Correa correa Velasquez  
 Thomas Bedoya rendon
-
-
-
-
-
-
-
-Developed as part of a **compiler construction and syntax analysis** project.  
-Language: **C++**
-
-
-
 
 
