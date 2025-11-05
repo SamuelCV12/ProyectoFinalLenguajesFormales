@@ -43,11 +43,10 @@ The program analyzes grammars, determines whether they are **LL(1)**, **SLR(1)**
 
 ## How to Compile and Run
 ### 1. Clone the Repository
-git clone https://github.com/<your-username>/<your-repo-name>.git  
-cd <your-repo-name>
+ - https://github.com/SamuelCV12/ProyectoFinalLenguajesFormales
 
 ### 2. Compile the Program
-g++ -std=c++17 -O2 -o parser main.cpp  
+g++ -std=c++17 -O2 -o parser ProyectoFinal.cpp  
 
 ### 3. Run the Program
 ./parser  
