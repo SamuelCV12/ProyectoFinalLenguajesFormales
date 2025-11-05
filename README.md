@@ -6,7 +6,7 @@
 
 ---
 
-## Environment and Tools Used
+## 1. Environment and Tools Used
 
 - **Operating System:** Windows 11  
 - **C++ Compiler:** g++ (MinGW.org GCC-6.3.0-1) 6.3.0  
@@ -14,16 +14,16 @@
 - **Visual Studio Code** (IDE) 
 
 ---
-## Project Description
+## 2. Project Description
 
 This project was developed for the **Formal Languages** course.  
 The goal is to design and implement algorithms to compute **FIRST** and **FOLLOW** sets, and to build both **LL(1)** (Top-Down) and **SLR(1)** (Bottom-Up) parsers for context-free grammars.  
 The program analyzes grammars, determines whether they are **LL(1)**, **SLR(1)**, both, or neither, and allows users to test input strings interactively.
 
 ---
-## Running the C++ Code (Visual Studio Code + MinGW)
+## 3. Running the C++ Code (Visual Studio Code + MinGW)
 
-### Prerequisites
+### 3.1 Prerequisites
 
 Before running the project, make sure you have the following installed and configured:
 
@@ -51,7 +51,7 @@ Before running the project, make sure you have the following installed and confi
 3. **C++ Extension for Visual Studio Code**  
    Install the official C++ extension from the Marketplace.
    
-### Initial Project Setup
+### 3.2 Initial Project Setup
 
 1. Open **Visual Studio Code**.  
 2. Create a folder for your project.  
@@ -61,7 +61,7 @@ Before running the project, make sure you have the following installed and confi
 5. Save the changes (`Ctrl + S`).
 6. Compile the program. (If there are no errors, a `main.exe` file will be created in the same folder.)
 
-### Running the Program
+### 3.3 Running the Program
 
 When you start the program, you’ll see a menu similar to this:
 ```
@@ -92,7 +92,7 @@ When asked to test strings:
 - The program will indicate whether the string is accepted (`yes`) or rejected (`no`) according to the selected parser type.
 
 ---
-## Execution Examples
+## 4. Execution Examples
 
 Below are some examples of the expected program behavior with different grammars.
 
@@ -161,14 +161,14 @@ Grammar is neither LL(1) nor SLR(1).
 
 
 ---
-## Examples Included
+## 5. Examples Included
 1. **Example 1:** Arithmetic expressions grammar (SLR(1))  
 2. **Example 2:** Grammar with epsilon transitions (LL(1) and SLR(1))  
 3. **Example 3:** Grammar that is neither LL(1) nor SLR(1)  
 4. **Option to input a custom grammar manually**
 
 ---
-## References
+## 6. References
 1. **Pdf:** 
    - Explanation of the project(https://drive.google.com/drive/folders/1PdU6It2ukd3Y5SR6j15NgUm5RaS1ZOl0)
 2. **Book**
