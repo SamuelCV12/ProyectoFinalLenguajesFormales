@@ -107,7 +107,7 @@ S -> S+T T
 T -> T*F F
 F -> (S) i
 ```
-**The program should print**: 
+**The program should print:**   
 Grammar is SLR(1).
 
 Then, assume it is given the strings (one at a time):
@@ -131,7 +131,7 @@ A -> aA d
 B -> bBc e
 ```
 
-**The program should print**
+**The program should print:**  
 Select a parser (T: for LL(1), B: for SLR(1), Q: quit):
 
 Assume **T** is given. Then, assume it is given the strings (one at a time):
@@ -155,8 +155,11 @@ a
 S -> A
 A -> A b
 ```
-**The program should print**
+
+**The program should print:**  
 Grammar is neither LL(1) nor SLR(1).
+
+
 ---
 ## Examples Included
 1. **Example 1:** Arithmetic expressions grammar (SLR(1))  
