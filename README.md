@@ -1,11 +1,22 @@
-# LL(1) and SLR(1) Parser Generator
+# Formal Languages Project (LL(1) and SLR(1) Parser Generator)
+---
 
-## Team Members
-- **Thomas Bedoya**
-- **Samuel Correa Velasquez**
+## Samuel Correa Velasquez — Class # 5730  
+## Thomas Bedoya Rendon — Class # 5730
+
+---
+
+## Environment and Tools Used
+
+- **Operating System:** Windows 11  
+- **C++ Compiler:** g++ (MinGW.org GCC-6.3.0-1) 6.3.0  
+- **Programming Language:** C++17
+- **Visual Studio Code** (IDE) 
+
+---
 
 ## Project Description
-This project was developed for the **Formal Languages and Compilers (ST0270 / SI2002)** course.  
+This project was developed for the **Formal Languages** course.  
 The goal is to design and implement algorithms to compute **FIRST** and **FOLLOW** sets, and to build both **LL(1)** (Top-Down) and **SLR(1)** (Bottom-Up) parsers for context-free grammars.  
 The program analyzes grammars, determines whether they are **LL(1)**, **SLR(1)**, both, or neither, and allows users to test input strings interactively.
 
@@ -133,16 +144,11 @@ Grammar is neither LL(1) nor SLR(1).
 ├── README.md           # Project documentation  
 └── examples/ (optional) # Folder for input grammars and sample runs  
 
-
-## License
-This project is for **academic purposes only**, following **EAFIT University – School of Applied Sciences and Engineering** guidelines.  
-All rights reserved to the authors.
-
+---
 ## References
-Aho, Alfred V. et al. *Compilers: Principles, Techniques, and Tools (2nd Edition).*  
-Addison-Wesley, 2006. ISBN: 0321486811.
-
-Repository: https://github.com/<your-username>/<your-repo-name>  
-Version: v1.0  
-Language: C++17  
-Institution: EAFIT University — School of Applied Sciences and Engineering
+1. **Pdf:** 
+   - Explanation of the project(https://drive.google.com/drive/folders/1PdU6It2ukd3Y5SR6j15NgUm5RaS1ZOl0)
+2. **Book**
+   - Aho, Alfred V. et al. Compilers: Principles, Techniques, and Tools (2nd Edition). USA: Addison-Wesley Longman
+3. **AI Tools:**
+   - ChatGPT for code organization and explanation of the project.
