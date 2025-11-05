@@ -142,7 +142,6 @@ Grammar is neither LL(1) nor SLR(1).
 │  
 ├── main.cpp            # Full implementation of LL(1) and SLR(1) parsers  
 ├── README.md           # Project documentation  
-└── examples/ (optional) # Folder for input grammars and sample runs  
 
 ---
 ## References
