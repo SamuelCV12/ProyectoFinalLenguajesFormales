@@ -140,7 +140,7 @@ Grammar is neither LL(1) nor SLR(1).
 ## Repository Structure
  Project Root  
 │  
-├── main.cpp            # Full implementation of LL(1) and SLR(1) parsers  
+├── ProyectoFinal.cpp   # Full implementation of LL(1) and SLR(1) parsers  
 ├── README.md           # Project documentation  
 
 ---
