@@ -48,24 +48,28 @@ set<char> firstOfString(const string &alpha,
 }
 
 int main() {
+    system("chcp 65001");
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
     while (true) {
-        cout << "Proyecto: Generador de Analizador sintactico  LL(1) y SLR(1)" << endl;
-        cout << "Seleccione el ejemplo a probar:" << endl;
-        cout << "1. Ejemplo 1 (gramatica de expresiones aritmeticas)" << endl;
-        cout << "2. Ejemplo 2 (gramatica con epsilon)" << endl;
-        cout << "3. Ejemplo 3 (gramatica no LL(1) ni SLR(1))" << endl;
-        cout << "4. Ingresar mi propia gramatica" << endl;
-        cout << "0. Salir" << endl;
-        cout << ""<< endl;
+        cout << "=====================================================================" << endl;
+        cout << "                 Generador de Analizador Sintáctico                   " << endl;
+        cout << "               LL(1) y SLR(1) - Proyecto de Lenguajes                " << endl;
+        cout << "=====================================================================" << endl;
+        cout << "Seleccione una de las siguientes opciones:" << endl;
+        cout << " 1. Ejemplo 1 (Gramatica de expresiones aritméticas)" << endl;
+        cout << " 2. Ejemplo 2 (Gramatica con epsilon)" << endl;
+        cout << " 3. Ejemplo 3 (Gramatica no LL(1) ni SLR(1))" << endl;
+        cout << " 4. Ingresar mi propia gramatica" << endl;
+        cout << " 0. Salir" << endl;
+        cout << "=====================================================================" << endl;
 
         int opcion;
         if (!(cin >> opcion)) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Entrada invalida." << endl;
+            cout << "\n[Error] Entrada inválida. Intente nuevamente." << endl;
             continue;
         }
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -84,54 +88,52 @@ int main() {
             grammar['T'] = {"T*F", "F"};
             grammar['F'] = {"(S)", "i"};
             nonterminals = {'S','T','F'};
-            cout << "Se cargo la siguiente gramatica:\n";
-            cout << "S -> S+T T\n";
-            cout << "T -> T*F F\n";
-            cout << "F -> (S) i\n";
-            cout << "" << endl;
+            cout << "\nGramatica cargada: Expresiones aritméticas" << endl;
+            cout << "S -> S+T | T" << endl;
+            cout << "T -> T*F | F" << endl;
+            cout << "F -> (S) | i" << endl;
+            cout << "=====================================================================" << endl;
         } else if (opcion == 2) {
             n = 3;
             grammar['S'] = {"AB"};
             grammar['A'] = {"aA", "d"};
             grammar['B'] = {"bBc", ""}; // "" representa epsilon
             nonterminals = {'S','A','B'};
-            cout << "Se cargo la siguiente gramatica:\n";
-            cout << "S -> AB\n";
-            cout << "A -> aA d\n";
-            cout << "B -> bBc e\n";
-            cout << "" << endl;
+            cout << "\nGramatica cargada: Con epsilon" << endl;
+            cout << "S -> AB" << endl;
+            cout << "A -> aA | d" << endl;
+            cout << "B -> bBc | e" << endl;
+            cout << "=====================================================================" << endl;
         } else if (opcion == 3) {
             // *** CORRECCIÓN SOLICITADA: caso especial para Ejemplo 3 ***
             n = 2;
             grammar['S'] = {"A"};
             grammar['A'] = {"Ab"};
             nonterminals = {'S','A'};
-            cout << "Se Cargo la siguiente gramatica\n";
-            cout << "S -> A\n";
-            cout << "A -> A b\n";
-            cout << "" << endl;
-            // Mensaje en español — no pedir parser ni permitir pruebas (según enunciado esperado)
-            cout << "Dicha gramatica no es LL(1) ni SLR(1)." << endl;
-            cout << "" << endl;
-            continue; // volvemos al menú principal
+            cout << "\nGramatica cargada: No LL(1) ni SLR(1)" << endl;
+            cout << "S -> A" << endl;
+            cout << "A -> A b" << endl;
+            cout << "\n[Advertencia] Esta gramática no es LL(1) ni SLR(1)." << endl;
+            cout << "=====================================================================" << endl;
+            continue; 
         } else if (opcion == 4) {
-            cout << "Ha seleccionado la opcion para ingresar su propia gramatica." << endl;
-            cout << "Primero indique el numero de producciones (derivaciones)." << endl;
+            cout << "\nHa seleccionado la opción para ingresar su propia gramatica." << endl;
+            cout << "Primero indique el número de producciones (derivaciones)." << endl;
         
             int nProd = 0;
-            cout << "Numero de producciones: ", nProd;
+            cout << "Número de producciones: ";
             if (!(cin >> nProd)) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Error: entrada invalida para el numero de producciones." << endl;
+                cout << "[Error] Entrada inválida para el número de producciones." << endl;
                 continue;
             }
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         
-            cout << "\nIngrese cada produccion en el formato: S -> rhs1 rhs2 ..." << endl;
-            cout << " - S debe ser un no terminal (una letra MAYUSCULA)." << endl;
-            cout << " - rhs son los simbolos en el lado derecho (terminales en minuscula o no terminales en MAYUSCULA)." << endl;
-            cout << " - Use 'e' para epsilon (cadena vacia)." << endl;
+            cout << "\nIngrese cada producción en el formato: S -> rhs1 rhs2 ..." << endl;
+            cout << "  - S debe ser un no terminal (una letra MAYÚSCULA)." << endl;
+            cout << "  - rhs son los símbolos en el lado derecho (terminales en minúscula o no terminales en MAYÚSCULA)." << endl;
+            cout << "  - Use 'e' para epsilon (cadena vacía)." << endl;
             cout << "------------------------------------------------------------" << endl;
         
             n = nProd;
@@ -173,13 +175,12 @@ int main() {
             }
         
             if (errorFormato) {
-                cout << "Error: produccion mal escrita. Revise el formato (ejemplo: S -> AB | a)." << endl;
+                cout << "[Error] Producción mal escrita. Revise el formato (ejemplo: S -> AB | a)." << endl;
                 continue;
             }
-        
-            // mostrar gramatica ingresada
+
             cout << "\nGramatica ingresada correctamente:" << endl;
-            cout << "Input" << endl;
+            cout << "=============================================================" << endl;
             cout << n << endl << endl;
             vector<char> nts(nonterminals.begin(), nonterminals.end());
             sort(nts.begin(), nts.end());
@@ -192,20 +193,16 @@ int main() {
                 }
                 cout << endl;
             }
-            cout << "------------------------------------------------------------" << endl << endl;
-        
-            // a partir de aqui el flujo sigue igual que en los ejemplos:
-            // validar si es LL(1), SLR(1), ambas o ninguna
-            // (tu codigo ya hace esto mas abajo, asi que no necesitas tocar nada adicional)
+            cout << "=============================================================" << endl;
         }
-         else {
-            cout << "Opcion invalida.\n";
+        else {
+            cout << "\n[Error] Opción inválida. Intente nuevamente.\n";
             continue;
         }
 
         // ============== VALIDACIONES BASICAS ==============
         if (!nonterminals.count('S')) {
-            cout << "Error: el simbolo inicial debe ser 'S'. Volviendo al menu.\n";
+            cout << "[Error] El símbolo inicial debe ser 'S'. Volviendo al menú.\n";
             continue;
         }
         // Terminals
@@ -218,11 +215,9 @@ int main() {
             }
         }
         if (terminals.count('$')) {
-            cout << "Error: el simbolo '$' no esta permitido como terminal. Volviendo al menu.\n";
+            cout << "[Error] El símbolo '$' no está permitido como terminal. Volviendo al menú.\n";
             continue;
         }
-
-        // ============== CALCULO NULLABLE ==============
         set<char> nullable;
         bool changed = true;
         while (changed) {
@@ -244,8 +239,6 @@ int main() {
                 }
             }
         }
-
-        // ============== FIRST ==============
         map<char, set<char>> FIRST;
         for (char A : nonterminals) FIRST[A] = set<char>();
         changed = true;
@@ -275,8 +268,6 @@ int main() {
                 }
             }
         }
-
-        // ============== FOLLOW ==============
         map<char, set<char>> FOLLOW;
         for (char A : nonterminals) FOLLOW[A] = set<char>();
         FOLLOW['S'].insert('$');
@@ -307,9 +298,7 @@ int main() {
                 }
             }
         }
-
-        // ============== TABLA LL(1) ==============
-        map<char, map<char,int>> LLtable; // A -> (terminal -> index de RHS)
+        map<char, map<char,int>> LLtable;
         bool isLL1 = true;
         for (auto &p : grammar) {
             char A = p.first;
@@ -330,8 +319,6 @@ int main() {
                 }
             }
         }
-
-        // ============== PREPARAR PRODUCCIONES SLR ==============
         char Z = 'Z';
         for (char c = 'A'; c <= 'Z'; ++c) {
             if (nonterminals.count(c) == 0) { Z = c; break; }
@@ -343,8 +330,6 @@ int main() {
         for (char A : nts) {
             for (auto &rhs : grammar[A]) prods.emplace_back(A, rhs);
         }
-
-        // ============== CLOSURE / GOTO para LR(0) ==============
         auto closure = [&](const vector<Item>& I) {
             vector<Item> C = I;
             bool added = true;
@@ -382,8 +367,6 @@ int main() {
             }
             return closure(moved);
         };
-
-        // ============== CONSTRUCCION COLECCION CANONICA LR(0) ==============
         vector<vector<Item>> states;
         vector<Item> start = { Item{0,0} };
         states.push_back(closure(start));
@@ -401,10 +384,8 @@ int main() {
                 if (k == (int)states.size()) states.push_back(J);
             }
         }
-
-        // ============== CONSTRUCCION ACTION / GOTO (SLR) ==============
-        map<pair<int,char>, pair<char,int>> action; // (state,terminal) -> ( 's'/'r'/'a', val )
-        map<pair<int,char>, int> go_to; // (state, nonterminal) -> state
+        map<pair<int,char>, pair<char,int>> action; 
+        map<pair<int,char>, int> go_to; 
         bool slrConflict = false;
         for (int i = 0; i < (int)states.size(); ++i) {
             set<char> syms;
@@ -445,45 +426,51 @@ int main() {
             }
         }
         bool isSLR1 = !slrConflict;
-
-        // ============== MOSTRAR RESULTADO Y CASOS SUGERIDOS ==============
         if (isLL1 && isSLR1) {
-            cout << "La gramatica es LL(1) y SLR(1)." << endl;
-            cout << "" << endl;
-            cout << "Puede seleccionar parser para probar cadenas." << endl;
+            cout << "\n=====================================================================" << endl;
+            cout << "                   La gramática es LL(1) y SLR(1)." << endl;
+            cout << "=====================================================================" << endl;
+            cout << "\nPuede seleccionar un parser para probar cadenas." << endl;
         } else if (isLL1) {
-            cout << "La gramatica es LL(1)." << endl;
+            cout << "\n=====================================================================" << endl;
+            cout << "                   La gramática es LL(1)." << endl;
+            cout << "=====================================================================" << endl;
         } else if (isSLR1) {
-            cout << "La gramatica es SLR(1)." << endl;
+            cout << "\n=====================================================================" << endl;
+            cout << "                   La gramática es SLR(1)." << endl;
+            cout << "=====================================================================" << endl;
         } else {
-            cout << "La gramatica no es LL(1) ni SLR(1)." << endl;
-            cout << "";
+            cout << "\n=====================================================================" << endl;
+            cout << "                   La gramática no es LL(1) ni SLR(1)." << endl;
+            cout << "=====================================================================" << endl;
+            cout << "\n[Error] Volviendo al menú principal..." << endl;
             continue;
         }
 
         if (opcion == 1) {
-            cout << "Casos de prueba sugeridos:" << endl;
-            cout << "i+i" << endl;
-            cout << "(i)" << endl;
-            cout << "(i+i)*i)" << endl;
-            cout << "" << endl;
+            cout << "\n=====================================================================" << endl;
+            cout << "                  Casos de prueba sugeridos para la gramática:" << endl;
+            cout << "=====================================================================" << endl;
+            cout << "  i+i" << endl;
+            cout << "  (i)" << endl;
+            cout << "  (i+i)*i)" << endl;
+            cout << "=====================================================================" << endl;
         } else if (opcion == 2) {
-            cout << "Casos de prueba sugeridos (si usa T):" << endl;
-            cout << "d" << endl;
-            cout << "adbc" << endl;
-            cout << "a" << endl;
+            cout << "\n=====================================================================" << endl;
+            cout << "                  Casos de prueba sugeridos (si usa T):" << endl;
+            cout << "=====================================================================" << endl;
+            cout << "  d" << endl;
+            cout << "  adbc" << endl;
+            cout << "  a" << endl;
+            cout << "=====================================================================" << endl;
         }
-
-        // ============== FUNCIONES DE PARSEO ==============
         auto parseLL = [&](const string &raw) -> bool {
-            // prepara input sin espacios y con $
             string input;
             for (char ch : raw) if (!isspace((unsigned char)ch)) input.push_back(ch);
             input.push_back('$');
-            // stack de simbolos (char), fondo $
             vector<char> st;
             st.push_back('$');
-            st.push_back('S'); // simbolo inicial S
+            st.push_back('S'); 
             size_t pos = 0;
             bool error = false;
             while (!st.empty() && !error) {
@@ -494,7 +481,7 @@ int main() {
                     if (X == a) {
                         st.pop_back();
                         pos++;
-                        if (X == '$') return true; // aceptado
+                        if (X == '$') return true; 
                         continue;
                     } else {
                         error = true; break;
@@ -504,8 +491,7 @@ int main() {
                     if (LLtable[X].count(a)) {
                         int idx = LLtable[X][a];
                         string rhs = grammar[X][idx];
-                        st.pop_back(); // quitar X
-                        // push rhs en orden inverso (si rhs vacio no empuja)
+                        st.pop_back(); 
                         for (int k = (int)rhs.size() - 1; k >= 0; --k) {
                             st.push_back(rhs[k]);
                         }
@@ -557,19 +543,25 @@ int main() {
             }
             return accepted;
         };
-
-        // ============== INTERACCION SEGUN TIPO ==============
         if (isLL1 && isSLR1) {
             // preguntar repetidamente selección de parser hasta Q
             while (true) {
-                cout << "\nSeleccione un parser (T: para LL(1), B: para SLR(1), Q: salir):" << endl;
+        cout << "\n=====================================================================" << endl;
+        cout << "                  Seleccione un parser:" << endl;
+        cout << "=====================================================================" << endl;
+        cout << " T: Para LL(1)" << endl;
+        cout << " B: Para SLR(1)" << endl;
+        cout << " Q: Para salir" << endl;
+        cout << "=====================================================================" << endl;
                 string sel;
                 if (!getline(cin, sel)) { sel = ""; }
                 if (sel.empty()) continue;
                 char c = toupper(sel[0]);
                 if (c == 'Q') break;
                 else if (c == 'T') {
-                    cout << "Ingrese cadenas a probar (linea vacia para terminar):" << endl;
+                    cout << "\n===============================================================================" << endl;
+                    cout << " Ingrese las cadenas a probar o (Ingrese una línea vacía para terminar la prueba):" << endl;
+                    cout << "=================================================================================" << endl;
                     while (true) {
                         string line;
                         if (!getline(cin, line)) line = "";
@@ -578,7 +570,9 @@ int main() {
                         cout << (ok ? "yes" : "no") << endl;
                     }
                 } else if (c == 'B') {
-                    cout << "Ingrese cadenas a probar (linea vacia para terminar):" << endl;
+        cout << "\n===========================================================================================" << endl;
+        cout << "Ingrese las cadenas a probar o (Presione Enter sin ingresar texto para finalizar la prueba):" << endl;
+        cout << "=============================================================================================" << endl;
                     while (true) {
                         string line;
                         if (!getline(cin, line)) line = "";
@@ -587,11 +581,17 @@ int main() {
                         cout << (ok ? "yes" : "no") << endl;
                     }
                 } else {
-                    cout << "Opcion invalida. Escriba T, B o Q." << endl;
+                    cout << "\n=====================================================================" << endl;
+                    cout << "                [Error] Opción inválida:" << endl;
+                    cout << "=====================================================================" << endl;
+                    cout << "    Por favor, ingrese una opción válida: T, B o Q." << endl;
+                    cout << "=====================================================================" << endl;
                 }
             }
         } else if (isLL1) {
-            cout << "Ingrese cadenas a probar (linea vacia para terminar):" << endl;
+        cout << "\n================================================================================" << endl;
+        cout << " Ingrese las cadenas a probar o (Presione Enter sin texto para terminar la prueba):" << endl;
+        cout << "==================================================================================" << endl;
             while (true) {
                 string line;
                 if (!getline(cin, line)) line = "";
@@ -600,7 +600,9 @@ int main() {
                 cout << (ok ? "yes" : "no") << endl;
             }
         } else if (isSLR1) {
-            cout << "Ingrese cadenas a probar (linea vacia para terminar):" << endl;
+            cout << "\n==================================================================================================" << endl;
+            cout << "Ingrese las cadenas que desea probar o (Presione Enter sin ingresar texto para finalizar la prueba):" << endl;
+            cout << "====================================================================================================" << endl;
             while (true) {
                 string line;
                 if (!getline(cin, line)) line = "";
@@ -609,11 +611,13 @@ int main() {
                 cout << (ok ? "yes" : "no") << endl;
             }
         }
-
         cout << "";
         // vuelve al menú
     }
-
-    cout << "Saliendo. ¡Listo!" << endl;
+    cout << "\n=====================================================================" << endl;
+    cout << "                   Saliendo del programa..." << endl;
+    cout << "=====================================================================" << endl;
+    cout << "                  ¡Hasta luego! ¡Que tenga un buen día!" << endl;
+    cout << "=====================================================================" << endl;
     return 0;
 }
